@@ -1,0 +1,266 @@
+openapi: 3.0.0
+info:
+  title: Imd-c API
+  version: 1.0.0
+  description: Imd-c API specification
+servers:
+  - url: http://localhost:5500
+    description: Local server
+paths:
+  /movies/popular:
+    get:
+      summary: Get the most popular movies
+      description: Retrieve the most popular movies.
+      parameters:
+        - $ref: '#/components/parameters/language_code'
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: The page number to retrieve
+        - name: per_page
+          in: query
+          description: number of movies per request
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 10
+            maximum: 20
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+      tags:
+        - client
+
+  /movies/search:
+    get:
+      summary: Search movies by term
+      description: Retrieve movies based on a search term.
+      parameters:
+        - $ref: '#/components/parameters/language_code'
+        - name: searchTerm
+          in: query
+          description: Search term to query movies
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+      tags:
+        - client
+
+  /movies/{movieId}:
+    get:
+      summary: Get a movie by ID
+      parameters:
+        - $ref: '#/components/parameters/language_code'
+        - name: movieId
+          in: path
+          required: true
+          description: ID of the movie to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested movie
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+        '404':
+          description: Movie not found 
+      tags:
+        - client
+
+
+  /admin/movies:
+    get:
+      summary: Get all movies (Admin)
+      description: Retrieve all movies from the database with paging for admin users.
+      parameters:
+        - $ref: '#/components/parameters/language_code'
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: The page number to retrieve
+        - in: query
+          name: per_page
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            default: 10
+          description: Number of movies per page
+      responses:
+        '200':
+          description: A list of movies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  movies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Movie'
+                  total_movies:
+                    type: integer
+                    description: Total number of movies in the database
+      tags:
+        - admin
+    post:
+      summary: Add a new movie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+      responses:
+        '201':
+          description: The newly created movie
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+      tags:
+        - admin
+
+  /admin/movies/{movieId}:
+    put:
+      summary: Update a movie
+      parameters:
+        - name: movieId
+          in: path
+          required: true
+          description: ID of the movie to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+      responses:
+        '200':
+          description: The updated movie
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+        '404':
+          description: Movie not found
+      tags:
+        - admin
+    delete:
+      summary: Delete a movie
+      parameters:
+        - name: movieId
+          in: path
+          required: true
+          description: ID of the movie to delete
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Movie deleted
+        '404':
+          description: Movie not found
+      tags:
+        - admin
+
+tags:
+  - name: client
+
+  - name: admin
+
+
+components:
+  parameters:
+    language_code:
+      name: language_code
+      in: query
+      description: Language code
+      schema:
+        type: string
+        enum: [en, nl]
+        default: en
+  schemas:
+    Movie:
+      type: object
+      properties:
+        movie_id:
+          type: string
+          description: The unique identifier for the movie
+        title:
+          type: string
+          description: The title of the movie
+        short_description:
+          type: string
+          description: A short description of the movie
+        year:
+          type: integer
+          description: The release year of the movie       
+        rating:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 5.0
+          multipleOf: 0.1
+        poster:
+          type: string
+          description: The poster url of the movie
+        genre:
+          type: string
+          description: The genre of the movie
+        full_cast:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActorInMovie'
+          description: The actors of the movie
+        director:
+          allOf:
+            - $ref: '#/components/schemas/Person'
+          description: The director of the movie
+        writers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+          description: The writers of the movie
+      
+    Person:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the actor
+        img:
+          type: string
+          description: The image url of the actor
+
+    ActorInMovie:
+      allOf:
+        - $ref: '#/components/schemas/Person'
+        - type: object
+          properties:
+            character:
+              type: string
+              description: The character of the actor in the movie

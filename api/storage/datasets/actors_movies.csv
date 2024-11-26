@@ -1,0 +1,101 @@
+movie_id;actor_id;character
+1;1;Paul Atreides
+1;2;Lady Jessica
+1;3;Duke Leto Atreides
+1;4;Gurney Halleck
+1;5;Baron Vladimir Harkonnen
+1;6;Glossu Rabban
+1;10;Chani
+1;7;Duncan Idaho
+1;8;Stilgar
+1;9;Reverend Mother Gaius Helen Mohiam
+2;14;Andy Dufresne
+2;15;"Ellis ""Red"" Redding"
+2;16;Warden Samuel Norton
+2;17;Heywood
+2;18;Captain Byron Hadley
+2;19;Tommy
+2;20;Brooks Hatlen
+2;22;District Attorney
+2;23;Skeet
+2;21;Jigger
+3;26;Bruce Wayne / Batman
+3;27;Joker
+3;28;Harvey Dent / Two-Face
+3;29;Alfred Pennyworth
+3;30;Rachel Dawes
+3;31;James Gordon
+3;15;Lucius Fox
+3;33;Sal Maroni
+3;34;Mayor Anthony Garcia
+3;32;Dr. Jonathan Crane / Scarecrow
+4;39;The Narrator
+4;38;Tyler Durden
+4;40;Marla Singer
+4;41;"Robert ""Bob"" Paulson"
+4;42;Richard Chesler
+4;43;Intern
+4;44;Thomas
+4;45;Group Leader
+4;46;Weeping Woman
+4;47;Leader Partners in Positivity
+5;51;Cooper
+5;52;Amelia Brand
+5;53;Murph (Adult)
+5;29;Professor Brand
+5;54;Tom (Adult)
+5;55;Murph (Young)
+5;57;Donald
+5;58;Getty
+5;56;Murph (Old)
+5;59;Romilly
+6;60;Billy Costigan
+6;61;Colin Sullivan
+6;62;Frank Costello
+6;63;Staff Sergeant Dignam
+6;64;Captain Oliver Queenan
+6;66;Mr. French
+6;65;Madolyn Madden
+6;67;Trooper Brown
+6;68;Captain George Ellerby
+6;69;Cousin Sean
+7;32;J. Robert Oppenheimer
+7;75;Kitty Oppenheimer
+7;61;General Leslie Groves
+7;76;Niels Bohr
+7;83;Jean Tatlock
+7;84;Edward Teller
+7;85;Richard Feynman
+7;86;Kenneth Bainbridge
+7;87;Robert Serber
+7;88;Joseph Rotblat
+8;91;Turkish
+8;38;Mickey O'Neil
+8;92;Franky Four Fingers
+8;93;Avi
+8;94;Bullet Tooth Tony
+8;95;"Boris ""The Blade"" Yurinov"
+8;96;Brick Top
+8;100;Sol
+8;99;Mullet
+8;98;Vinny
+9;60;Jordan Belfort
+9;102;Donnie Azoff
+9;104;Naomi Lapaglia
+9;51;Mark Hanna
+9;105;Agent Patrick Denham
+9;106;Max Belfort
+9;103;Brad Bodnick
+9;107;Manny Riskin
+9;108;Jean-Jacques Saurel
+9;112;Teresa Petrillo
+10;38;Lt. Aldo Raine
+10;116;Col. Hans Landa
+10;110;Shosanna Dreyfus
+10;118;Lt. Archie Hicox
+10;119;Bridget von Hammersmark
+10;120;Pvt. Fredrick Zoller
+10;121;Sgt. Hugo Stiglitz
+10;117;Sgt. Donny Donowitz
+10;123;Marcel
+10;111;Major Dieter Hellstrom
