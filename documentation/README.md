@@ -8,7 +8,9 @@ This contains a more basic sample Vue app.
 
 ## Backend
 
-Launching the api can be done by cloning the "api" folder and implementing in Laragon or whatever similar program you use. If you use laragon, make sure the api folder is in laragon's "www" folder.
+Launching the api can be done by cloning the "api" folder and implementing in Laragon or whatever similar program you use. If you use laragon, make sure the api folder is in laragon's "www" folder. 
+
+For laragon, the following commands must be run from its terminal. PS, Bash,... won't work.
 
 Then running: 
 
